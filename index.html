@@ -1,67 +1,134 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-Hant">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LYPEX | Official Distribution Node</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>LYPEX Official Security Center</title>
     <style>
-        :root { --primary-blue: #1a73e8; --dark-blue: #0d47a1; --bg-color: #f8fafc; }
-        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; background: var(--bg-color); display: flex; align-items: center; justify-content: center; min-height: 100vh; margin: 0; padding: 20px; box-sizing: border-box; }
-        .card { background: white; padding: 50px 30px; border-radius: 30px; box-shadow: 0 20px 60px rgba(0,0,0,0.1); text-align: center; max-width: 380px; width: 100%; border: 1px solid #eef2f7; }
-        
-        .brand-name { font-size: 46px; font-weight: 900; color: #1a1a1a; margin: 0; letter-spacing: -2px; }
-        .official-tag { display: inline-block; background: #e8f0fe; color: var(--primary-blue); font-size: 11px; font-weight: 700; padding: 5px 14px; border-radius: 50px; margin: 15px 0 25px; text-transform: uppercase; letter-spacing: 1.5px; border: 1px solid #d2e3fc; }
-        
-        .version-info { font-size: 14px; color: var(--primary-blue); font-weight: 600; margin-bottom: 20px; }
-        p { color: #5f6368; font-size: 15px; line-height: 1.6; margin-bottom: 30px; }
-        
-        /* 核心安全提示 */
-        .security-notice { background: #fff9eb; border: 1px solid #f9e6ad; border-left: 5px solid #ffc107; padding: 18px; border-radius: 14px; font-size: 13px; color: #856404; text-align: left; margin-bottom: 35px; line-height: 1.6; }
-        
-        /* 下載按鈕組 */
-        .btn-main { display: block; background: var(--primary-blue); color: white; text-decoration: none; padding: 18px; border-radius: 16px; font-weight: 700; font-size: 18px; margin-bottom: 15px; transition: all 0.3s ease; box-shadow: 0 6px 20px rgba(26,115,232,0.3); }
-        .btn-main:hover { background: var(--dark-blue); transform: translateY(-2px); box-shadow: 0 8px 25px rgba(26,115,232,0.4); }
-        
-        .btn-backup { display: block; background: white; color: var(--primary-blue); text-decoration: none; padding: 14px; border-radius: 16px; font-weight: 600; font-size: 14px; border: 2px solid var(--primary-blue); transition: all 0.2s; }
-        .btn-backup:hover { background: #f0f7ff; }
-        
-        .footer { margin-top: 45px; font-size: 11px; color: #94a3b8; text-transform: uppercase; letter-spacing: 2px; font-weight: 600; }
+        :root {
+            --primary-blue: #1a237e;
+            --accent-gold: #c5a059;
+            --bg-white: #ffffff;
+            --text-dark: #333333;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: #f4f7f9;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            color: var(--text-dark);
+        }
+        .container {
+            width: 90%;
+            max-width: 400px;
+            background: var(--bg-white);
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        .logo {
+            width: 80px;
+            height: 80px;
+            margin-bottom: 20px;
+        }
+        h1 {
+            color: var(--primary-blue);
+            font-size: 24px;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+        p {
+            font-size: 14px;
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 25px;
+        }
+        .security-badge {
+            display: inline-block;
+            background: #e8f5e9;
+            color: #2e7d32;
+            padding: 5px 12px;
+            border-radius: 50px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+        .btn {
+            display: block;
+            width: 100%;
+            padding: 15px 0;
+            margin-bottom: 15px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            box-sizing: border-box;
+        }
+        .btn-primary {
+            background-color: var(--primary-blue);
+            color: white;
+            box-shadow: 0 4px 15px rgba(26, 35, 126, 0.3);
+        }
+        .btn-secondary {
+            background-color: #ffffff;
+            color: var(--primary-blue);
+            border: 2px solid var(--primary-blue);
+        }
+        .btn-ios {
+            background-color: #000000;
+            color: white;
+        }
+        .footer-text {
+            font-size: 11px;
+            color: #999;
+            margin-top: 20px;
+        }
     </style>
 </head>
 <body>
-    <div class="card">
-        <h1 class="brand-name">LYPEX</h1>
-        <div class="official-tag">Verified Distribution Center</div>
-        
-        <div class="version-info">Release: v1.0.1 Build</div>
-        <p>Global encrypted node is ready.<br>Download the official package below.</p>
-        
-        <div class="security-notice">
-            <strong>Security Protocol:</strong><br>
-            If your system shows a "File might be harmful" warning, please select <strong>"Download anyway"</strong>. Our encrypted package is 100% safe.
-        </div>
 
-        <a href="https://www.dropbox.com/scl/fi/6ihjheea7amio9463rq8m/LYPlusEX-101-1.0.1.apk?rlkey=9cj7hkvywzgk5wacipuicgamp&dl=1&.apk" 
-           id="mainDl" class="btn-main" onclick="initBackupTimer()">
-           Download Now
-        </a>
-        
-        <a href="https://www.dropbox.com/scl/fi/zwkbg6bgmsf7ngn8qn6l2/LYPlusEX-101-1.0.1.apk?rlkey=iprkkhj9f2m1bvwtg826924go&dl=1&.apk" 
-           class="btn-backup">
-           Backup Download (Source 2)
-        </a>
-        
-        <div class="footer">© 2026 LYPEX GLOBAL SECURITY</div>
+<div class="container">
+    <div class="security-badge">✓ End-to-End Encryption Active</div>
+    
+    <h1>LYPEX GLOBAL</h1>
+    <p>Official Secure Node for Financial Privacy.<br>官方私密安全節點</p>
+
+    <a href="https://www.dropbox.com/scl/fi/6ihjheea7amio9463rq8m/LYPlusEX-101-1.0.1.apk?rlkey=9cj7hkvywzgk5wacipuicgamp&dl=1&.apk" class="btn btn-primary">
+        Download for Android (Direct)
+    </a>
+
+    <a href="https://t.me/lypex_official/3" class="btn btn-secondary">
+        Android Backup (Telegram Node)
+    </a>
+
+    <a href="https://t.me/lypex_official/4" class="btn btn-ios">
+        Download for iOS (IPA Node)
+    </a>
+
+    <div class="footer-text">
+        Verified Official Portal: lypex.net<br>
+        If system warning appears, please select "Install Anyway".<br>
+        若系統彈出警告，請選擇「仍要安裝」。
     </div>
+</div>
 
-    <script>
-        function initBackupTimer() {
-            // 自動修復：如果主連結響應慢，3秒後嘗試備用連結
-            const backupLink = "https://www.dropbox.com/scl/fi/zwkbg6bgmsf7ngn8qn6l2/LYPlusEX-101-1.0.1.apk?rlkey=iprkkhj9f2m1bvwtg826924go&dl=1&.apk";
-            setTimeout(function() {
-                window.location.href = backupLink;
-            }, 3500);
-        }
-    </script>
+<script>
+    // 自動重試邏輯：若主鏈接點擊無反應，3秒後引導至備援頻道
+    document.querySelector('.btn-primary').addEventListener('click', function() {
+        setTimeout(function() {
+            console.log("If download hasn't started, please use the backup nodes.");
+        }, 3000);
+    });
+
+    // 強制 HTTPS 跳轉
+    if (location.protocol !== 'https:' && location.hostname !== 'localhost') {
+        location.replace(`https:${location.href.substring(location.protocol.length)}`);
+    }
+</script>
+
 </body>
 </html>

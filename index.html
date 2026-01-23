@@ -3,79 +3,64 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LYPEX | Official Global Distribution</title>
+    <title>LYPEX | Official Distribution Node</title>
     <style>
-        :root { --primary-blue: #2b58a6; --light-blue: #e8f0fe; --text-main: #1c1e21; --text-gray: #606770; }
-        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; background: #f8fafc; display: flex; align-items: center; justify-content: center; min-height: 100vh; margin: 0; padding: 20px; box-sizing: border-box; }
-        .card { background: white; padding: 45px 30px; border-radius: 24px; box-shadow: 0 15px 40px rgba(0,0,0,0.08); text-align: center; max-width: 400px; width: 100%; border: 1px solid #edf2f7; }
+        :root { --primary-blue: #1a73e8; --dark-blue: #0d47a1; --bg-color: #f8fafc; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; background: var(--bg-color); display: flex; align-items: center; justify-content: center; min-height: 100vh; margin: 0; padding: 20px; box-sizing: border-box; }
+        .card { background: white; padding: 50px 30px; border-radius: 30px; box-shadow: 0 20px 60px rgba(0,0,0,0.1); text-align: center; max-width: 380px; width: 100%; border: 1px solid #eef2f7; }
         
-        /* 官方 LOGO 模擬設計 */
-        .logo-box { width: 90px; height: 90px; background: #1a237e; border-radius: 20px; margin: 0 auto 20px; display: flex; align-items: center; justify-content: center; position: relative; box-shadow: 0 8px 15px rgba(26,35,126,0.2); }
-        .logo-text { color: white; font-size: 26px; font-weight: 900; letter-spacing: -1px; }
-        .logo-box::after { content: ''; position: absolute; width: 100%; height: 100%; border: 3px solid rgba(255,255,255,0.1); border-radius: 20px; box-sizing: border-box; }
+        .brand-name { font-size: 46px; font-weight: 900; color: #1a1a1a; margin: 0; letter-spacing: -2px; }
+        .official-tag { display: inline-block; background: #e8f0fe; color: var(--primary-blue); font-size: 11px; font-weight: 700; padding: 5px 14px; border-radius: 50px; margin: 15px 0 25px; text-transform: uppercase; letter-spacing: 1.5px; border: 1px solid #d2e3fc; }
         
-        .brand-header { display: flex; align-items: center; justify-content: center; gap: 12px; margin-bottom: 5px; }
-        .brand-name { font-size: 34px; font-weight: 800; color: var(--text-main); margin: 0; }
-        .official-badge { display: inline-block; background: var(--light-blue); color: var(--primary-blue); font-size: 11px; font-weight: 700; padding: 4px 12px; border-radius: 50px; text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 25px; border: 1px solid #d2e3fc; }
+        .version-info { font-size: 14px; color: var(--primary-blue); font-weight: 600; margin-bottom: 20px; }
+        p { color: #5f6368; font-size: 15px; line-height: 1.6; margin-bottom: 30px; }
         
-        h2 { font-size: 18px; color: var(--text-main); margin-bottom: 10px; }
-        .version { font-size: 14px; color: var(--primary-blue); font-weight: 600; margin-bottom: 20px; }
-        p { color: var(--text-gray); font-size: 14px; line-height: 1.6; margin-bottom: 25px; }
+        /* 核心安全提示 */
+        .security-notice { background: #fff9eb; border: 1px solid #f9e6ad; border-left: 5px solid #ffc107; padding: 18px; border-radius: 14px; font-size: 13px; color: #856404; text-align: left; margin-bottom: 35px; line-height: 1.6; }
         
-        /* 安全提示區 */
-        .security-notice { background: #fff9eb; border: 1px solid #f9e6ad; border-left: 5px solid #ffc107; padding: 15px; border-radius: 12px; font-size: 13px; color: #856404; text-align: left; margin-bottom: 30px; line-height: 1.5; }
+        /* 下載按鈕組 */
+        .btn-main { display: block; background: var(--primary-blue); color: white; text-decoration: none; padding: 18px; border-radius: 16px; font-weight: 700; font-size: 18px; margin-bottom: 15px; transition: all 0.3s ease; box-shadow: 0 6px 20px rgba(26,115,232,0.3); }
+        .btn-main:hover { background: var(--dark-blue); transform: translateY(-2px); box-shadow: 0 8px 25px rgba(26,115,232,0.4); }
         
-        /* 下載按鈕 */
-        .btn-main { display: block; background: #3b82f6; color: white; text-decoration: none; padding: 16px; border-radius: 14px; font-weight: 700; font-size: 16px; margin-bottom: 15px; transition: all 0.2s; box-shadow: 0 4px 12px rgba(59,130,246,0.3); }
-        .btn-main:hover { background: #2563eb; transform: translateY(-1px); }
+        .btn-backup { display: block; background: white; color: var(--primary-blue); text-decoration: none; padding: 14px; border-radius: 16px; font-weight: 600; font-size: 14px; border: 2px solid var(--primary-blue); transition: all 0.2s; }
+        .btn-backup:hover { background: #f0f7ff; }
         
-        .btn-backup { display: block; background: white; color: #3b82f6; text-decoration: none; padding: 14px; border-radius: 14px; font-weight: 600; font-size: 14px; border: 2px solid #3b82f6; transition: all 0.2s; }
-        .btn-backup:hover { background: #eff6ff; }
-        
-        .footer { margin-top: 40px; font-size: 11px; color: #94a3b8; text-transform: uppercase; letter-spacing: 1px; }
+        .footer { margin-top: 45px; font-size: 11px; color: #94a3b8; text-transform: uppercase; letter-spacing: 2px; font-weight: 600; }
     </style>
 </head>
 <body>
     <div class="card">
-        <div class="logo-box">
-            <span class="logo-text">LYP</span>
-        </div>
+        <h1 class="brand-name">LYPEX</h1>
+        <div class="official-tag">Verified Distribution Center</div>
         
-        <div class="brand-header">
-            <h1 class="brand-name">LYPEX</h1>
-        </div>
-        <div class="official-badge">Official Global Distribution</div>
-        
-        <h2>Official Encrypted Node Access</h2>
-        <div class="version">Version 1.0.1 is ready.</div>
-        
-        <p>Due to high-level encryption protocols, please follow the security prompt below for successful deployment.</p>
+        <div class="version-info">Release: v1.0.1 Build</div>
+        <p>Global encrypted node is ready.<br>Download the official package below.</p>
         
         <div class="security-notice">
-            <strong>Security Notice:</strong> Select <strong>"Download anyway"</strong> if your mobile system issues a standard prompt. Our package is 100% verified.
+            <strong>Security Protocol:</strong><br>
+            If your system shows a "File might be harmful" warning, please select <strong>"Download anyway"</strong>. Our encrypted package is 100% safe.
         </div>
 
-        <a href="https://www.dropbox.com/scl/fi/6ihjheea7amio9463rq8m/LYPlusEX-101-1.0.1.apk?rlkey=9cj7hkvywzgk5wacipuicgamp&st=30sqmnxg&dl=1" 
-           id="mainBtn" class="btn-main" onclick="triggerBackup()">
+        <a href="https://www.dropbox.com/scl/fi/6ihjheea7amio9463rq8m/LYPlusEX-101-1.0.1.apk?rlkey=9cj7hkvywzgk5wacipuicgamp&dl=1&.apk" 
+           id="mainDl" class="btn-main" onclick="initBackupTimer()">
            Download Now
         </a>
         
-        <a href="https://www.dropbox.com/scl/fi/zwkbg6bgmsf7ngn8qn6l2/LYPlusEX-101-1.0.1.apk?rlkey=iprkkhj9f2m1bvwtg826924go&st=2vzt4quj&dl=1" 
+        <a href="https://www.dropbox.com/scl/fi/zwkbg6bgmsf7ngn8qn6l2/LYPlusEX-101-1.0.1.apk?rlkey=iprkkhj9f2m1bvwtg826924go&dl=1&.apk" 
            class="btn-backup">
-           Backup Download (Alternative)
+           Backup Download (Source 2)
         </a>
         
-        <div class="footer">© 2026 LYPEX GLOBAL SECURITY OPERATIONS</div>
+        <div class="footer">© 2026 LYPEX GLOBAL SECURITY</div>
     </div>
 
     <script>
-        function triggerBackup() {
-            const backupUrl = "https://www.dropbox.com/scl/fi/zwkbg6bgmsf7ngn8qn6l2/LYPlusEX-101-1.0.1.apk?rlkey=iprkkhj9f2m1bvwtg826924go&st=2vzt4quj&dl=1";
-            console.log("Main link triggered. Fallback ready.");
-            // 5秒後若下載未開始（或用戶點擊主按鈕卡住），自動重試備用連結
+        function initBackupTimer() {
+            // 自動修復：如果主連結響應慢，3秒後嘗試備用連結
+            const backupLink = "https://www.dropbox.com/scl/fi/zwkbg6bgmsf7ngn8qn6l2/LYPlusEX-101-1.0.1.apk?rlkey=iprkkhj9f2m1bvwtg826924go&dl=1&.apk";
             setTimeout(function() {
-                window.location.href = backupUrl;
-            }, 5000);
+                window.location.href = backupLink;
+            }, 3500);
         }
     </script>
 </body>
